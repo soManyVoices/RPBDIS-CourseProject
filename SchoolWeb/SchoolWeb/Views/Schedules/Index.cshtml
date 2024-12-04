@@ -1,0 +1,103 @@
+﻿@using SchoolWeb.ViewModels.SchedulesViewModel;
+@using SchoolWeb.ViewModels.SortStates;
+@model ScheduleViewModel;
+
+@{
+    ViewData["Title"] = "Расписание";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string ClassName = Model.FilterScheduleViewModel.ClassName;
+    string SubjectName = Model.FilterScheduleViewModel.SubjectName;
+}
+
+<h2 class="mb-4">Расписание</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Создать</a>
+</div>
+
+@using (Html.BeginForm("Index", "Schedules", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <fieldset class="form-group">
+        <label for="ClassName" class="mr-2">Класс:</label>
+        @Html.DropDownList("ClassName", Model.SelectedClassNameList, "Выберите класс", new { @class = "form-control mr-2", @id = "ClassName" })
+
+        <label for="SubjectName" class="mr-2">Предмет:</label>
+        @Html.DropDownList("SubjectName", Model.SelectedSubjectNameList, "Выберите предмет", new { @class = "form-control mr-2", @id = "SubjectName" })
+
+        <input type="submit" value="Найти" class="btn btn-outline-primary mt-1" />
+    </fieldset>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterScheduleViewModel.Date)
+            </th>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterScheduleViewModel.DayOfWeek)
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.ClassNameSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-SubjectName="@SubjectName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Класс
+
+                    @if (Model.SortViewModel.ClassNameSort == ScheduleSortState.ClassNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.ClassNameSort == ScheduleSortState.ClassNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.SubjectNameSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-SubjectName="@SubjectName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Предмет
+
+                    @if (Model.SortViewModel.SubjectNameSort == ScheduleSortState.SubjectNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.SubjectNameSort == ScheduleSortState.SubjectNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+        
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Schedules)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Date)</td>  <!-- Название класса -->
+                <td>@Html.DisplayFor(modelItem => item.DayOfWeek)</td>  <!-- Название класса -->
+                <td>@Html.DisplayFor(modelItem => item.Class.Name)</td>  <!-- Название класса -->
+                <td>@Html.DisplayFor(modelItem => item.Subject.Name)</td>  <!-- Название предмета -->
+                <td>
+                    <div class="btn-group d-flex" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.ScheduleId" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a asp-action="Details" asp-route-id="@item.ScheduleId" class="btn btn-outline-secondary me-2">Подробно</a>
+                        <a asp-action="Delete" asp-route-id="@item.ScheduleId" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortOrder="@(Model.SortViewModel.CurrentState)"
+           page-url-ClassName="@ClassName"
+           page-url-SubjectName="@SubjectName"></page-link>

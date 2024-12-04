@@ -1,0 +1,120 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4" style="color: #fff;">Удаление</h2>
+
+<div class="container">
+    <div class="card shadow-sm" style="background-color: #333; color: #fff;">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-4" style="color: #fff;">Вы уверены, что хотите удалить ученика?</h4>
+            <dl class="row" style="color: #fff;">
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.MiddleName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.MiddleName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.DateOfBirth)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.FatherFirstName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.FatherFirstName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.FatherLastName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.FatherLastName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.FatherMiddleName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.FatherMiddleName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.MotherFirstName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.MotherFirstName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.MotherLastName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.MotherLastName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.MotherMiddleName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.MotherMiddleName)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.Class.Name)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.Class.Name)
+                </dd>
+
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.AdditionalInfo)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.AdditionalInfo)
+                </dd>
+            </dl>
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="StudentId" />
+                <button type="submit" class="btn btn-danger">Удалить</button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Вернуться к списку</a>
+            </form>
+        </div>
+    </div>
+</div>

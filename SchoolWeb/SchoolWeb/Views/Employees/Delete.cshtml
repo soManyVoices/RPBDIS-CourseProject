@@ -1,0 +1,47 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4" style="color: #fff;">Удаление</h2>
+
+<div class="container">
+    <div class="card shadow-sm" style="background-color: #333; color: #fff;">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-4" style="color: #fff;">Вы уверены, что хотите удалить этого сотрудника?</h4>
+            <dl class="row" style="color: #fff;">
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.MiddleName)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.MiddleName)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.Position.Name)
+                </dt>
+                <dd class="col-sm-8" style="color: #fff;">
+                    @Html.DisplayFor(model => model.Position.Name)
+                </dd>
+            </dl>
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="EmployeeId" />
+                <button type="submit" class="btn btn-danger">Удалить</button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Вернуться к списку</a>
+            </form>
+        </div>
+    </div>
+</div>

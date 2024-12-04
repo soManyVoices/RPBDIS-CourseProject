@@ -1,0 +1,145 @@
+﻿@using SchoolWeb.ViewModels.StudentViewModel;
+@using SchoolWeb.ViewModels.SortStates;
+@model StudentViewModel;
+
+@{
+    ViewData["Title"] = "Студенты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DateOnly? DateOfBirth = Model.FilterStudentViewModel.DateOfBirth;
+    string ClassName = Model.FilterStudentViewModel.ClassName;
+    string SubjectName = Model.FilterStudentViewModel.SubjectName;
+}
+
+<h2 class="mb-4">Студенты</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Создать</a>
+</div>
+
+@using (Html.BeginForm("Index", "Students", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <fieldset class="form-group">
+        <label for="DateOfBirth" class="mr-2">Дата рождения:</label>
+        @Html.TextBox("DateOfBirth",
+                DateOfBirth.HasValue && DateOfBirth != DateOnly.MinValue ? DateOfBirth.Value.ToString("yyyy-MM-dd") : string.Empty,
+                new { @class = "form-control mr-2", @id = "DateOfBirth", type = "date" })
+
+
+        <label for="ClassName" class="mr-2">Класс:</label>
+        @Html.DropDownList("ClassName",
+                Model.SelectedClassNameList,
+                "Выберите класс",
+                new { @class = "form-control mr-2", @id = "ClassName" })
+
+        <label for="SubjectName" class="mr-2">Предмет:</label>
+        @Html.DropDownList("SubjectName",
+                Model.SelectedSubjectNameList,
+                "Выберите предмет",
+                new { @class = "form-control mr-2", @id = "SubjectName" })
+
+        <input type="submit" value="Найти" class="btn btn-outline-primary mt-1" />
+    </fieldset>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterStudentViewModel.FirstName)
+            </th>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterStudentViewModel.LastName)
+            </th>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterStudentViewModel.MiddleName)
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.DateOfBirthSort"
+                   asp-route-DateOfBirth="@DateOfBirth?.ToString("yyyy-MM-dd")"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-SubjectName="@SubjectName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Дата рождения
+
+                    @if (Model.SortViewModel.DateOfBirthSort == StudentSortState.DateOfBirthAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.DateOfBirthSort == StudentSortState.DateOfBirthDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.ClassNameSort"
+                   asp-route-DateOfBirth="@DateOfBirth?.ToString("yyyy-MM-dd")"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-SubjectName="@SubjectName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Класс
+
+                    @if (Model.SortViewModel.ClassNameSort == StudentSortState.ClassNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.ClassNameSort == StudentSortState.ClassNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.SubjectNameSort"
+                   asp-route-DateOfBirth="@DateOfBirth?.ToString("yyyy-MM-dd")"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-SubjectName="@SubjectName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Предмет
+
+                    @if (Model.SortViewModel.SubjectNameSort == StudentSortState.SubjectNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.SubjectNameSort == StudentSortState.SubjectNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.MiddleName)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateOfBirth)</td>
+                <td>@Html.DisplayFor(modelItem => item.Class.Name)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class.Schedules.FirstOrDefault().Subject.Name)
+                </td>
+
+                <td>
+                    <div class="btn-group d-flex" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.StudentId" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a asp-action="Details" asp-route-id="@item.StudentId" class="btn btn-outline-secondary me-2">Подробно</a>
+                        <a asp-action="Delete" asp-route-id="@item.StudentId" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortOrder="@(Model.SortViewModel.CurrentState)"
+           page-url-DateOfBirth="@DateOfBirth?.ToString("yyyy-MM-dd")"
+           page-url-ClassName="@ClassName"
+           page-url-SubjectName="@SubjectName"></page-link>

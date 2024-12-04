@@ -1,0 +1,153 @@
+﻿@using SchoolWeb.ViewModels.EmployeesViewModel;
+@using SchoolWeb.ViewModels.SortStates;
+@model EmployeeViewModel;
+
+@{
+    ViewData["Title"] = "Сотрудники";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string EmployeeFirstName = Model.FilterEmployeeViewModel.EmployeeFirstName;
+    string EmployeeLastName = Model.FilterEmployeeViewModel.EmployeeLastName;
+    string EmployeeMiddleName = Model.FilterEmployeeViewModel.EmployeeMiddleName;
+    string PositionName = Model.FilterEmployeeViewModel.PositionName;
+}
+
+<h2 class="mb-4">Сотрудники</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Создать</a>
+</div>
+
+@using (Html.BeginForm("Index", "Employees", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <fieldset class="form-group">
+        <label for="EmployeeFirstName" class="mr-2">Имя:</label>
+        @Html.TextBox("EmployeeFirstName", EmployeeFirstName, new { @class = "form-control mr-2", @id = "EmployeeFirstName" })
+
+        <label for="EmployeeLastName" class="mr-2">Фамилия:</label>
+        @Html.TextBox("EmployeeLastName", EmployeeLastName, new { @class = "form-control mr-2", @id = "EmployeeLastName" })
+
+        <label for="EmployeeMiddleName" class="mr-2">Отчество:</label>
+        @Html.TextBox("EmployeeMiddleName", EmployeeMiddleName, new { @class = "form-control mr-2", @id = "EmployeeMiddleName" })
+
+        <label for="PositionName" class="mr-2">Должность:</label>
+        @Html.DropDownList("PositionName",
+                Model.SelectedPositionTypeList,
+                "Выберите должность",
+                new { @class = "form-control mr-2", @id = "PositionName" })
+
+        <input type="submit" value="Найти" class="btn btn-outline-primary mt-1" />
+    </fieldset>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.FirstNameSort"
+                   asp-route-EmployeeFirstName="@EmployeeFirstName"
+                   asp-route-EmployeeLastName="@EmployeeLastName"
+                   asp-route-EmployeeMiddleName="@EmployeeMiddleName"
+                   asp-route-PositionName="@PositionName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Имя
+
+                    @if (Model.SortViewModel.FirstNameSort == EmployeeSortState.EmployeeFirstNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.FirstNameSort == EmployeeSortState.EmployeeFirstNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.LastNameSort"
+                   asp-route-EmployeeFirstName="@EmployeeFirstName"
+                   asp-route-EmployeeLastName="@EmployeeLastName"
+                   asp-route-EmployeeMiddleName="@EmployeeMiddleName"
+                   asp-route-PositionName="@PositionName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Фамилия
+
+                    @if (Model.SortViewModel.LastNameSort == EmployeeSortState.EmployeeLastNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.LastNameSort == EmployeeSortState.EmployeeLastNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.MiddleNameSort"
+                   asp-route-EmployeeFirstName="@EmployeeFirstName"
+                   asp-route-EmployeeLastName="@EmployeeLastName"
+                   asp-route-EmployeeMiddleName="@EmployeeMiddleName"
+                   asp-route-PositionName="@PositionName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Отчество
+
+                    @if (Model.SortViewModel.MiddleNameSort == EmployeeSortState.EmployeeMiddleNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.MiddleNameSort == EmployeeSortState.EmployeeMiddleNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.PositionNameSort"
+                   asp-route-EmployeeFirstName="@EmployeeFirstName"
+                   asp-route-EmployeeLastName="@EmployeeLastName"
+                   asp-route-EmployeeMiddleName="@EmployeeMiddleName"
+                   asp-route-PositionName="@PositionName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Должность
+
+                    @if (Model.SortViewModel.PositionNameSort == EmployeeSortState.PositionNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.PositionNameSort == EmployeeSortState.PositionNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Employees)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.MiddleName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Position.Name)</td>
+                <td>
+                    <div class="btn-group d-flex" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-outline-secondary me-2">Подробно</a>
+                        <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortOrder="@(Model.SortViewModel.CurrentState)"
+           page-url-EmployeeFirstName="@EmployeeFirstName"
+           page-url-EmployeeLastName="@EmployeeLastName"
+           page-url-EmployeeMiddleName="@EmployeeMiddleName"
+           page-url-PositionName="@PositionName"></page-link>

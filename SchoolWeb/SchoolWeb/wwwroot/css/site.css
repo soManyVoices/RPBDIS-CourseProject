@@ -1,0 +1,154 @@
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    outline: none;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: #141414;
+    color: white;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #141414;
+    color: white;
+}
+
+.navbar {
+    background-color: #141414;
+    color: white;
+    border-bottom: 1px solid #444444;
+}
+
+.navbar-brand {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        color: #258cfb;
+    }
+
+.navbar a.nav-link {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+    .navbar a.nav-link:hover {
+        color: #258cfb;
+    }
+
+.navbar-toggler {
+    border-color: white;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.hover-card {
+    transition: transform 0.3s ease;
+    background-color: #333333;
+    color: white;
+    border: 1px solid #444444;
+}
+
+.hover-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    outline: none;
+}
+
+.hover-card:hover {
+    transform: scale(1.05);
+}
+
+.hover-button:focus,
+.hover-button:hover,
+.hover-button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.form-floating label {
+    color: #999999;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    background-color: #1f1f1f;
+    border: 1px solid #333333;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: #cccccc;
+}
+
+.form-control:focus {
+    background-color: #282828;
+    border-color: #4a90e2;
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    color: white;
+}
+
+.form-control:not(:placeholder-shown) {
+    background-color: #1f1f1f;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #ffffff; /* Белый фон таблицы */
+    color: #333333; /* Темный текст */
+    border: 1px solid #dddddd; /* Светлая граница */
+    border-radius: 10px; /* Скругление углов таблицы */
+    overflow: hidden; /* Скрытие контента, выходящего за границы, после скругления */
+}
+
+.table th, .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dddddd; /* Легкая граница между ячейками */
+}
+
+.table thead {
+        background-color: #f8f9fa; /* Светлый фон для заголовка таблицы */
+        color: #495057; /* Темный текст в заголовке */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent; /* Убираем чередование фона строк */
+}
+
+.table-bordered {
+    border: 1px solid #dddddd; /* Легкая граница вокруг всей таблицы */
+    border-radius: 10px; /* Скругление углов таблицы */
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table a {
+    text-decoration: none;
+}
+
+.table .btn {
+    transition: all 0.3s ease; /* Плавное изменение всех свойств за 0.3 секунды */
+}
+
+.table .btn:hover {
+        transform: scale(1.05); /* Увеличение кнопки при наведении */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень при наведении */
+}

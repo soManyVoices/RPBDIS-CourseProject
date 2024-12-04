@@ -1,0 +1,76 @@
+﻿@using SchoolWeb.ViewModels.ClassTypesViewModel;
+@using SchoolWeb.ViewModels.SortStates;
+@model ClassTypeViewModel;
+
+@{
+    ViewData["Title"] = "Типы классов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string ClassTypeName = Model.FilterClassTypeViewModel.ClassTypeName;
+}
+
+<h2 class="mb-4">Виды классов</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Создать</a>
+</div>
+
+@using (Html.BeginForm("Index", "ClassTypes", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <fieldset class="form-group">
+        <label for="ClassTypeName" class="mr-2">Название типа класса:</label>
+        @Html.DropDownList("ClassTypeName",
+                Model.SelectedClassTypeList,
+                "Выберите тип класса",
+                new { @class = "form-control mr-2", @id = "ClassTypeName" })
+
+        <input type="submit" value="Найти" class="btn btn-outline-primary mt-1" />
+    </fieldset>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.ClassTypeNameSort"
+                   asp-route-ClassTypeName="@ClassTypeName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Название
+
+                    @if (Model.SortViewModel.ClassTypeNameSort == ClassTypeSortState.ClassTypeNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.ClassTypeNameSort == ClassTypeSortState.ClassTypeNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                @Html.DisplayNameFor(model => model.FilterClassTypeViewModel.Description)
+            </th>
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ClassTypes)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <div class="btn-group d-flex" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.ClassTypeId" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a asp-action="Details" asp-route-id="@item.ClassTypeId" class="btn btn-outline-secondary me-2">Подробно</a>
+                        <a asp-action="Delete" asp-route-id="@item.ClassTypeId" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortOrder="@(Model.SortViewModel.CurrentState)"
+           page-url-ClassTypeName="@ClassTypeName"></page-link>

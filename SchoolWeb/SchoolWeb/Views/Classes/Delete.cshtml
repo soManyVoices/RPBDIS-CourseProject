@@ -1,0 +1,53 @@
+﻿@model Class
+
+@{
+    ViewData["Title"] = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4" style="color: #fff;">Удаление</h2>
+
+<div class="container">
+    <div class="card shadow-sm" style="background-color: #333; color: #fff;">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-4" style="color: #fff;">Вы уверены, что хотите удалить этот класс?</h4>
+            <dl class="row" style="color: #fff;">
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.ClassTeacher)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ClassTeacher)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.ClassType.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ClassType.Name)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.StudentCount)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentCount)
+                </dd>
+                <dt class="col-sm-4" style="color: #ccc;">
+                    @Html.DisplayNameFor(model => model.YearCreated)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.YearCreated)
+                </dd>
+            </dl>
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="ClassId" />
+                <button type="submit" class="btn btn-danger">Удалить</button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Вернуться к списку</a>
+            </form>
+        </div>
+    </div>
+</div>

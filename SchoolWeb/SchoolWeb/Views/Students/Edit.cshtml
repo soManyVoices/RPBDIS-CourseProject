@@ -1,0 +1,96 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Редактировать";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4" style="color: #fff;">Редактировать</h2>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm" style="background-color: #333; border-color: #444;">
+                <div class="card-body" style="background-color: #333;">
+                    <h4 class="card-title text-center mb-4" style="color: #fff;">Ученик</h4>
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="StudentId">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="FirstName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="LastName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MiddleName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="MiddleName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateOfBirth" class="control-label" style="color: #fff;">Дата:</label>
+                            <input asp-for="DateOfBirth" class="form-control" type="date" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Gender" class="control-label" style="color: #fff;">Пол:</label>
+                            <select asp-for="Gender" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;">
+                                <option value="" disabled selected>Выберите пол</option>
+                                <option value="Мужской">Мужской</option>
+                                <option value="Женский">Женский</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label" style="color: #fff;">Дата:</label>
+                            <input asp-for="Address" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FatherFirstName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="FatherFirstName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FatherLastName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="FatherLastName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FatherMiddleName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="FatherMiddleName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MotherFirstName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="MotherFirstName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MotherLastName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="MotherLastName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MotherMiddleName" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="MotherMiddleName" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ClassId" class="control-label" style="color: #fff;"></label>
+                            <select asp-for="ClassId" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" asp-items="ViewBag.ClassId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AdditionalInfo" class="control-label" style="color: #fff;"></label>
+                            <input asp-for="AdditionalInfo" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <input type="submit" value="Сохранить" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-link" style="color: #fff;">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

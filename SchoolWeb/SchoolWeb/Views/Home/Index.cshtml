@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div class="container mt-5">
+    <!-- Заголовок страницы -->
+    <div class="text-center mb-4">
+        <h1 class="display-4">Добро пожаловать на главную страницу</h1>
+    </div>
+
+    <!-- Блоки навигации -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Классы</h5>
+                    <p class="card-text">Перейдите к таблице классов, чтобы управлять данными о классах.</p>
+                    <a href="@Url.Action("Index", "Classes")" class="btn btn-dark hover-button">Перейти к классам</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Сотрудники школы</h5>
+                    <p class="card-text">Просмотрите информацию о сотрудниках школы и их расписаниях.</p>
+                    <a href="@Url.Action("Index", "Employees")" class="btn btn-dark hover-button">Перейти к сотрудникам</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Ученики</h5>
+                    <p class="card-text">Перейдите к списку учеников, чтобы увидеть и управлять их данными.</p>
+                    <a href="@Url.Action("Index", "Students")" class="btn btn-dark hover-button">Перейти к ученикам</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка для расписания -->
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Расписание</h5>
+                    <p class="card-text">Перейдите к расписанию, чтобы просмотреть и управлять расписанием для классов и учеников.</p>
+                    <a href="@Url.Action("Index", "Schedules")" class="btn btn-dark hover-button">Перейти к расписанию</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Новая карточка для предметов -->
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Предметы</h5>
+                    <p class="card-text">Перейдите к таблице предметов, чтобы управлять списком доступных предметов.</p>
+                    <a href="@Url.Action("Index", "Subjects")" class="btn btn-dark hover-button">Перейти к предметам</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка для видов классов -->
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Виды классов</h5>
+                    <p class="card-text">Перейдите к таблице видов классов, чтобы управлять типами классов и их характеристиками.</p>
+                    <a href="@Url.Action("Index", "ClassTypes")" class="btn btn-dark hover-button">Перейти к видам классов</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка для должностей -->
+        <div class="col-md-4">
+            <div class="card mb-4 hover-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Должности</h5>
+                    <p class="card-text">Перейдите к таблице должностей, чтобы управлять списком должностей сотрудников.</p>
+                    <a href="@Url.Action("Index", "Positions")" class="btn btn-dark hover-button">Перейти к должностям</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model Schedule
+
+@{
+    ViewData["Title"] = "Создать";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4" style="color: #fff;">Создать</h2>
+
+<div class="container">
+    <div class="card shadow-sm" style="background-color: #333; color: #fff;">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-4" style="color: #fff;">Расписание</h4>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <!-- Дата -->
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label" style="color: #fff;">Дата:</label>
+                    <input asp-for="Date" class="form-control" type="date" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                </div>
+
+                <!-- День недели -->
+                <div class="form-group">
+                    <label asp-for="DayOfWeek" class="control-label" style="color: #fff;">День недели:</label>
+                    <select asp-for="DayOfWeek" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;">
+                        <option value="Monday">Понедельник</option>
+                        <option value="Tuesday">Вторник</option>
+                        <option value="Wednesday">Среда</option>
+                        <option value="Thursday">Четверг</option>
+                        <option value="Friday">Пятница</option>
+                        <option value="Saturday">Суббота</option>
+                        <option value="Sunday">Воскресенье</option>
+                    </select>
+                </div>
+
+                <!-- Предмет -->
+                <div class="form-group">
+                    <label asp-for="SubjectId" class="control-label" style="color: #fff;">Предмет:</label>
+                    <select asp-for="SubjectId" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" asp-items="ViewBag.SubjectId"></select>
+                </div>
+
+                <!-- Класс -->
+                <div class="form-group">
+                    <label asp-for="ClassId" class="control-label" style="color: #fff;">Класс:</label>
+                    <select asp-for="ClassId" class="form-control" style="background-color: #555; color: #fff; border: 1px solid #444;" asp-items="ViewBag.ClassId"></select>
+                </div>
+
+                <!-- Время начала -->
+                <div class="form-group">
+                    <label asp-for="StartTime" class="control-label" style="color: #fff;">Время начала:</label>
+                    <input asp-for="StartTime" class="form-control" type="time" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
+
+                <!-- Время окончания -->
+                <div class="form-group">
+                    <label asp-for="EndTime" class="control-label" style="color: #fff;">Время окончания:</label>
+                    <input asp-for="EndTime" class="form-control" type="time" style="background-color: #555; color: #fff; border: 1px solid #444;" />
+                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,155 @@
+﻿@using SchoolWeb.ViewModels.ClassesViewModel;
+@using SchoolWeb.ViewModels.SortStates;
+@model ClassViewModel;
+
+@{
+    ViewData["Title"] = "Классы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string ClassName = Model.FilterClassViewModel.ClassName;
+    int? YearCreated = Model.FilterClassViewModel.YearCreated;
+    int? StudentCount = Model.FilterClassViewModel.StudentCount;
+    string ClassTypeName = Model.FilterClassViewModel.ClassTypeName;
+}
+
+<h2 class="mb-4">Классы</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-success">Создать</a>
+</div>
+
+@using (Html.BeginForm("Index", "Classes", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <fieldset class="form-group">
+        <label for="ClassName" class="mr-2">Название класса:</label>
+        @Html.TextBox("ClassName", ClassName, new { @class = "form-control mr-2", @id = "ClassName" })
+
+        <label for="YearCreated" class="mr-2">Год создания:</label>
+        @Html.TextBox("YearCreated", YearCreated, new { @class = "form-control mr-2", @id = "YearCreated", type = "number" })
+
+        <label for="ClassTypeName" class="mr-2">Тип класса:</label>
+        @Html.DropDownList("ClassTypeName",
+                Model.SelectedClassTypeList,
+                "Выберите тип класса",
+                new { @class = "form-control mr-2", @id = "ClassTypeName" })
+
+        <label for="StudentCount" class="mr-2">Количество учеников:</label>
+        @Html.TextBox("StudentCount", StudentCount, new { @class = "form-control mr-2", @id = "StudentCount", type = "number" })
+
+        <input type="submit" value="Найти" class="btn btn-outline-primary mt-1" />
+    </fieldset>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.ClassNameSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-YearCreated="@YearCreated"
+                   asp-route-StudentCount="@StudentCount"
+                   asp-route-ClassTypeName="@ClassTypeName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Название
+
+                    @if (Model.SortViewModel.ClassNameSort == ClassSortState.ClassNameAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.ClassNameSort == ClassSortState.ClassNameDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th>Классный руководитель</th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.ClassTypeSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-YearCreated="@YearCreated"
+                   asp-route-StudentCount="@StudentCount"
+                   asp-route-ClassTypeName="@ClassTypeName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Тип класса
+
+                    @if (Model.SortViewModel.ClassTypeSort == ClassSortState.ClassTypeAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.ClassTypeSort == ClassSortState.ClassTypeDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.StudentCountSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-YearCreated="@YearCreated"
+                   asp-route-StudentCount="@StudentCount"
+                   asp-route-ClassTypeName="@ClassTypeName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Кол-во учеников
+
+                    @if (Model.SortViewModel.StudentCountSort == ClassSortState.StudentCountAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.StudentCountSort == ClassSortState.StudentCountDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th style="width: 150px;">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@Model.SortViewModel.YearCreatedSort"
+                   asp-route-ClassName="@ClassName"
+                   asp-route-YearCreated="@YearCreated"
+                   asp-route-StudentCount="@StudentCount"
+                   asp-route-ClassTypeName="@ClassTypeName"
+                   style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+                    Год создания
+
+                    @if (Model.SortViewModel.YearCreatedSort == ClassSortState.YearCreatedAsc)
+                    {
+                        <span class="bi bi-arrow-up" style="margin-left: 5px;"></span>
+                    }
+                    else if (Model.SortViewModel.YearCreatedSort == ClassSortState.YearCreatedDesc)
+                    {
+                        <span class="bi bi-arrow-down" style="margin-left: 5px;"></span>
+                    }
+                </a>
+            </th>
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Classes)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassTeacher)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassType.Name)</td> 
+                <td>@Html.DisplayFor(modelItem => item.StudentCount)</td>
+                <td>@Html.DisplayFor(modelItem => item.YearCreated)</td>
+                <td>
+                    <div class="btn-group d-flex" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.ClassId" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a asp-action="Details" asp-route-id="@item.ClassId" class="btn btn-outline-secondary me-2">Подробно</a>
+                        <a asp-action="Delete" asp-route-id="@item.ClassId" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortOrder="@(Model.SortViewModel.CurrentState)"
+           page-url-ClassName="@ClassName"
+           page-url-YearCreated="@YearCreated"
+           page-url-StudentCount="@StudentCount"
+           page-url-ClassTypeName="@ClassTypeName"></page-link>

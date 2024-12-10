@@ -31,10 +31,10 @@ jobs:
       run: dotnet restore SchoolWeb/SchoolWeb/SchoolWeb.csproj
 
     - name: Install dependencies for test project
-      run: dotnet restore SchoolWeb\SchoolWeb.Tests/SchoolWeb.Tests.csproj
+      run: dotnet restore SchoolWeb/SchoolWeb.Tests/SchoolWeb.Tests.csproj
 
     - name: Build
       run: dotnet build SchoolWeb/SchoolWeb/SchoolWeb.csproj --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test SchoolWeb\SchoolWeb.Tests/SchoolWeb.Tests.csproj --no-restore --verbosity normal
+      run: dotnet test SchoolWeb/SchoolWeb.Tests/SchoolWeb.Tests.csproj --no-restore --verbosity normal

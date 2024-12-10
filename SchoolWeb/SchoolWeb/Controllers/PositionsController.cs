@@ -48,7 +48,6 @@ namespace SchoolWeb.Controllers
 
             IQueryable<Position> positions = _context.Positions;
 
-            // Применяем фильтрацию только по имени должности
             positions = Sort_Search(
                positions,
                sortOrder,
@@ -103,13 +102,17 @@ namespace SchoolWeb.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([Bind("PositionId, Name, Description, Salary")] Position position)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
             {
                 _context.Add(position);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            return View(position);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Positions/Edit/5

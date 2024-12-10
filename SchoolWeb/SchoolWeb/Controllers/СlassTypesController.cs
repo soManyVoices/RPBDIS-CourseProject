@@ -102,13 +102,17 @@ namespace SchoolWeb.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([Bind("ClassTypeId, Name, Description")] ClassType classType)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
             {
                 _context.Add(classType);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            return View(classType);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ClassTypes/Edit/5

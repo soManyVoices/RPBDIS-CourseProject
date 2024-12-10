@@ -31,6 +31,7 @@ namespace SchoolWeb.Controllers
 
         // GET: Students
         [SetToSession("Student")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 264)]
         [Authorize]
         public async Task<IActionResult> Index(FilterStudentViewModel studentFilter, StudentSortState sortOrder = StudentSortState.No, int page = 1, DateOnly? dateOfBirth = null)
         {
@@ -52,8 +53,6 @@ namespace SchoolWeb.Controllers
                 .ThenInclude(c => c.Schedules)
                     .ThenInclude(sch => sch.Subject)
             .AsQueryable();
-
-            // Логирование или отладка
 
             studentsQuery = Sort_Search(
                 studentsQuery,
@@ -85,7 +84,6 @@ namespace SchoolWeb.Controllers
 
             return View(studentViewModel);
         }
-
 
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -121,15 +119,17 @@ namespace SchoolWeb.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create(Student student)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClassId"] = new SelectList(_context.Classes, "ClassId", "Name", student.ClassId);
-            return View(student);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Students/Edit/5
@@ -225,11 +225,11 @@ namespace SchoolWeb.Controllers
         }
 
         private static IQueryable<Student> Sort_Search(
-      IQueryable<Student> students,
-      StudentSortState sortOrder,
-      string className,
-      string subjectName,
-      DateOnly? dateOfBirth)
+          IQueryable<Student> students,
+          StudentSortState sortOrder,
+          string className,
+          string subjectName,
+          DateOnly? dateOfBirth)
         {
             // Фильтрация по названию класса, если передано значение
             if (!string.IsNullOrEmpty(className))
@@ -251,12 +251,6 @@ namespace SchoolWeb.Controllers
             {
                 students = students.Where(s => s.DateOfBirth == dateOfBirth.Value);
             }
-            else
-            {
-                Console.WriteLine("Дата рождения не указана или установлена по умолчанию.");
-            }
-
-
 
             // Сортировка
             switch (sortOrder)

@@ -14,7 +14,7 @@ namespace SchoolWeb.Data
         {
             UserManager<ApplicationUser> userManager = context.RequestServices.GetRequiredService<UserManager<ApplicationUser>>();
             RoleManager<IdentityRole> roleManager = context.RequestServices.GetRequiredService<RoleManager<IdentityRole>>();
-            string adminEmail = "   ";
+            string adminEmail = "admin@gmail.com";
             string adminName = "admin@gmail.com";
 
             string password = "_Aa123456";

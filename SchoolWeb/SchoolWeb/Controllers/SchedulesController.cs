@@ -28,9 +28,11 @@ namespace SchoolWeb.Controllers
         }
 
         // GET: Schedules
+        [SetToSession("Schedule")]
+        [Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 264)]
         public async Task<IActionResult> Index(FilterScheduleViewModel scheduleFilter, ScheduleSortState sortOrder = ScheduleSortState.No, int page = 1)
         {
-            // Проверка, если фильтры не заданы, пытаемся восстановить их из сессии
             if (scheduleFilter.ClassName == null || scheduleFilter.SubjectName == null)
             {
                 if (HttpContext != null)
@@ -51,8 +53,8 @@ namespace SchoolWeb.Controllers
             scheduleQuery = Sort_Search(
                scheduleQuery,
                sortOrder,
-               scheduleFilter.ClassName,
-               scheduleFilter.SubjectName
+               scheduleFilter.ClassName ?? "",
+               scheduleFilter.SubjectName ?? ""
             );
 
             // Получаем количество записей после фильтрации
@@ -83,7 +85,7 @@ namespace SchoolWeb.Controllers
                 SelectedSubjectNameList = new SelectList(subjectNames),
             };
 
-            return View(scheduleViewModel); // Отправляем модель в представление
+            return View(scheduleViewModel);
         }
 
         // GET: Schedules/Details/5

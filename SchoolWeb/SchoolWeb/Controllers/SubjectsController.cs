@@ -9,6 +9,7 @@ using SchoolWeb.ViewModels.SubjectsViewModel;
 using SchoolWeb.ViewModels.SortStates;
 using SchoolWeb.ViewModels.SortViewModels;
 using SchoolWeb.Infrastructure;
+using SchoolWeb.Infrastructure.Filters;
 
 namespace SchoolWeb.Controllers
 {
@@ -28,6 +29,9 @@ namespace SchoolWeb.Controllers
         }
 
         // GET: Subjects
+        [SetToSession("Subject")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 264)]
+        [Authorize]
         public async Task<IActionResult> Index(FilterSubjectViewModel subjectFilter, SubjectSortState sortOrder = SubjectSortState.No, int page = 1)
         {
             // Если фильтры не заданы, пытаемся восстановить их из сессии
@@ -63,13 +67,11 @@ namespace SchoolWeb.Controllers
             // Загружаем список предметов
             var subjectsList = await subjectQuery.ToListAsync();
 
-            // Создаем список названий предметов для SelectList
             // Создаем список уникальных названий предметов для SelectList
             var subjectNames = _context.Subjects
                                 .Select(s => s.Name)
                                 .Distinct()
                                 .ToList();
-
 
             // Создаем модель для передачи данных в представление
             SubjectViewModel subjectViewModel = new()
@@ -89,11 +91,11 @@ namespace SchoolWeb.Controllers
         {
             if (id == null)
             {
-                return NotFound(); // Если ID не задано, возвращаем ошибку
+                return NotFound();
             }
 
             var subjectItem = await _context.Subjects
-                .Include(s => s.Employee) // Включаем информацию о преподавателе
+                .Include(s => s.Employee) 
                 .SingleOrDefaultAsync(m => m.SubjectId == id);
             if (subjectItem == null)
             {
@@ -119,15 +121,15 @@ namespace SchoolWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState); // Если модель не валидна, возвращаем ошибку
+                return BadRequest(ModelState);
             }
             else
             {
-                _context.Add(subject); // Добавляем новый предмет в базу данных
-                await _context.SaveChangesAsync(); // Сохраняем изменения
+                _context.Add(subject);
+                await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction(nameof(Index)); // Перенаправляем на список предметов
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Subjects/Edit/5
@@ -136,17 +138,17 @@ namespace SchoolWeb.Controllers
         {
             if (id == null)
             {
-                return NotFound(); // Если ID не задано, возвращаем ошибку
+                return NotFound();
             }
 
             var subjectItem = await _context.Subjects.SingleOrDefaultAsync(m => m.SubjectId == id);
             if (subjectItem == null)
             {
-                return NotFound(); // Если предмет не найден, возвращаем ошибку
+                return NotFound();
             }
 
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", subjectItem.EmployeeId);
-            return View(subjectItem); // Отображаем форму для редактирования предмета
+            return View(subjectItem);
         }
 
         // POST: Subjects/Edit/5
@@ -157,32 +159,32 @@ namespace SchoolWeb.Controllers
         {
             if (id != subject.SubjectId)
             {
-                return NotFound(); // Если ID не совпадает, возвращаем ошибку
+                return NotFound();
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(subject); // Обновляем информацию о предмете
-                    await _context.SaveChangesAsync(); // Сохраняем изменения
+                    _context.Update(subject);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!SubjectExists(subject.SubjectId))
                     {
-                        return NotFound(); // Если предмет не найден, возвращаем ошибку
+                        return NotFound();
                     }
                     else
                     {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index)); // Перенаправляем на список предметов
+                return RedirectToAction(nameof(Index)); 
             }
 
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", subject.EmployeeId);
-            return View(subject); // Отображаем форму с ошибками, если модель невалидна
+            return View(subject); 
         }
 
         // GET: Subjects/Delete/5
@@ -191,18 +193,18 @@ namespace SchoolWeb.Controllers
         {
             if (id == null)
             {
-                return NotFound(); // Если ID не задано, возвращаем ошибку
+                return NotFound();
             }
 
             var subjectItem = await _context.Subjects
-                .Include(s => s.Employee) // Включаем информацию о преподавателе
+                .Include(s => s.Employee) 
                 .SingleOrDefaultAsync(m => m.SubjectId == id);
             if (subjectItem == null)
             {
-                return NotFound(); // Если предмет не найден, возвращаем ошибку
+                return NotFound(); 
             }
 
-            return View(subjectItem); // Отображаем подтверждение удаления
+            return View(subjectItem); 
         }
 
         // POST: Subjects/Delete/5
@@ -212,18 +214,16 @@ namespace SchoolWeb.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var subjectItem = await _context.Subjects.SingleOrDefaultAsync(m => m.SubjectId == id);
-            _context.Subjects.Remove(subjectItem); // Удаляем предмет из базы данных
-            await _context.SaveChangesAsync(); // Сохраняем изменения
-            return RedirectToAction(nameof(Index)); // Перенаправляем на список предметов
+            _context.Subjects.Remove(subjectItem); 
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index)); 
         }
 
-        // Проверка, существует ли предмет с заданным ID
         private bool SubjectExists(int id)
         {
             return _context.Subjects.Any(e => e.SubjectId == id);
         }
 
-        // Метод для фильтрации и сортировки предметов
         private static IQueryable<Subject> Sort_Search(
          IQueryable<Subject> subjects,
          SubjectSortState sortOrder,

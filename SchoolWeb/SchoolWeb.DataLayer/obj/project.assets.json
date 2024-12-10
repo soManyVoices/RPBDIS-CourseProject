@@ -4734,19 +4734,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alexander\\.nuget\\packages\\": {}
+    "C:\\Users\\Konstantin\\.nuget\\packages\\": {},
+    "D:\\Applications\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alexander\\Desktop\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\SchoolWeb.DataLayer.csproj",
+      "projectUniqueName": "C:\\Users\\Konstantin\\Desktop\\3курс(5сем)\\РПБДИС\\ДемидКурсач\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\SchoolWeb.DataLayer.csproj",
       "projectName": "SchoolWeb.DataLayer",
-      "projectPath": "C:\\Users\\Alexander\\Desktop\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\SchoolWeb.DataLayer.csproj",
-      "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alexander\\Desktop\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\obj\\",
+      "projectPath": "C:\\Users\\Konstantin\\Desktop\\3курс(5сем)\\РПБДИС\\ДемидКурсач\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\SchoolWeb.DataLayer.csproj",
+      "packagesPath": "C:\\Users\\Konstantin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Konstantin\\Desktop\\3курс(5сем)\\РПБДИС\\ДемидКурсач\\CourseProject\\SchoolWeb\\SchoolWeb.DataLayer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Applications\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Konstantin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4770,8 +4775,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -4808,7 +4814,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

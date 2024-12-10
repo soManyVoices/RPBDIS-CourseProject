@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SchoolWeb.DataLayer.Models.Class">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <AssociationLine Name="Schedules" Type="SchoolWeb.DataLayer.Models.Schedule" ManuallyRouted="true">
+      <Path>
+        <Point X="17.406" Y="3.757" />
+        <Point X="17.406" Y="4.007" />
+        <Point X="18.5" Y="4.007" />
+        <Point X="18.5" Y="6.5" />
+        <Point X="25.125" Y="6.5" />
+        <Point X="25.125" Y="5.071" />
+        <Point X="25.5" Y="5.071" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIQQAAgAAAAAAAAAAABAAQAAEAAAAAAAAgEAAAAAAA=</HashCode>
+      <FileName>Models\Class.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Students" />
+      <Property Name="Schedules" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.ClassType">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEgAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\ClassType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Classes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.Employee">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAgAAAQAAAAAACAAAAAAAAAAAACAAg=</HashCode>
+      <FileName>Models\Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Subjects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.Position">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAgAAAAAAAAAAQACACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Position.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Employees" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.Schedule">
+    <Position X="25.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgEAAAAABAAIIAAAAAIAAgAAABAAAEAAAAAAA=</HashCode>
+      <FileName>Models\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.Student">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAEAgAAAAgADAABIQAAAAAAIQAAACAAAAAAACIAg=</HashCode>
+      <FileName>Models\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Models.Subject">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAAAAAAAAQACEAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Subject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Schedules" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Data.DbInitializer">
+    <Position X="23" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DbInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.DataLayer.Data.SchoolContext">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAAAAEAAAAgAAAAAAAACEAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Data\SchoolContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.ClassesViewModel.ClassViewModel">
+    <Position X="4" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.156" Y="8.046" />
+        <Point X="5.156" Y="8.488" />
+        <Point X="6.417" Y="8.488" Type="JumpStart" />
+        <Point X="6.583" Y="8.488" Type="JumpEnd" />
+        <Point X="8.167" Y="8.488" Type="JumpStart" />
+        <Point X="8.333" Y="8.488" Type="JumpEnd" />
+        <Point X="9.682" Y="8.488" Type="JumpStart" />
+        <Point X="9.849" Y="8.488" Type="JumpEnd" />
+        <Point X="10.323" Y="8.488" Type="JumpStart" />
+        <Point X="10.49" Y="8.488" Type="JumpEnd" />
+        <Point X="11.667" Y="8.488" Type="JumpStart" />
+        <Point X="11.833" Y="8.488" Type="JumpEnd" />
+        <Point X="12.073" Y="8.488" Type="JumpStart" />
+        <Point X="12.24" Y="8.488" Type="JumpEnd" />
+        <Point X="13.417" Y="8.488" Type="JumpStart" />
+        <Point X="13.583" Y="8.488" Type="JumpEnd" />
+        <Point X="15.167" Y="8.488" Type="JumpStart" />
+        <Point X="15.333" Y="8.488" Type="JumpEnd" />
+        <Point X="17.25" Y="8.488" />
+        <Point X="17.25" Y="9.605" />
+        <Point X="19.568" Y="9.605" />
+        <Point X="19.568" Y="8.5" />
+        <Point X="19" Y="8.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAEAAAAAEAAACAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClassesViewModel\ClassViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterClassViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.ClassesViewModel.FilterClassViewModel">
+    <Position X="4" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAACAAAAAAAABAAAAAAAAAAAABAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClassesViewModel\FilterClassViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.ClassTypesViewModel.ClassTypeViewModel">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.906" Y="8.046" />
+        <Point X="6.906" Y="8.488" />
+        <Point X="8.167" Y="8.488" Type="JumpStart" />
+        <Point X="8.333" Y="8.488" Type="JumpEnd" />
+        <Point X="9.682" Y="8.488" Type="JumpStart" />
+        <Point X="9.849" Y="8.488" Type="JumpEnd" />
+        <Point X="10.323" Y="8.488" Type="JumpStart" />
+        <Point X="10.49" Y="8.488" Type="JumpEnd" />
+        <Point X="11.667" Y="8.488" Type="JumpStart" />
+        <Point X="11.833" Y="8.488" Type="JumpEnd" />
+        <Point X="12.073" Y="8.488" Type="JumpStart" />
+        <Point X="12.24" Y="8.488" Type="JumpEnd" />
+        <Point X="13.417" Y="8.488" Type="JumpStart" />
+        <Point X="13.583" Y="8.488" Type="JumpEnd" />
+        <Point X="15.167" Y="8.488" Type="JumpStart" />
+        <Point X="15.333" Y="8.488" Type="JumpEnd" />
+        <Point X="17.125" Y="8.488" />
+        <Point X="17.125" Y="6.938" />
+        <Point X="17.875" Y="6.938" />
+        <Point X="17.875" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAEAAACAAAAAAAAABAAAAAAACAAAA=</HashCode>
+      <FileName>ViewModels\ClassTypesViewModel\ClassTypeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterClassTypeViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.ClassTypesViewModel.FilterClassTypeViewModel">
+    <Position X="5.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClassTypesViewModel\FilterClassTypeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.EmployeesViewModel.EmployeeViewModel">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.656" Y="8.046" />
+        <Point X="8.656" Y="8.488" />
+        <Point X="9.682" Y="8.488" Type="JumpStart" />
+        <Point X="9.849" Y="8.488" Type="JumpEnd" />
+        <Point X="10.323" Y="8.488" Type="JumpStart" />
+        <Point X="10.49" Y="8.488" Type="JumpEnd" />
+        <Point X="11.667" Y="8.488" Type="JumpStart" />
+        <Point X="11.833" Y="8.488" Type="JumpEnd" />
+        <Point X="12.073" Y="8.488" Type="JumpStart" />
+        <Point X="12.24" Y="8.488" Type="JumpEnd" />
+        <Point X="13.417" Y="8.488" Type="JumpStart" />
+        <Point X="13.583" Y="8.488" Type="JumpEnd" />
+        <Point X="15.167" Y="8.488" Type="JumpStart" />
+        <Point X="15.333" Y="8.488" Type="JumpEnd" />
+        <Point X="17.406" Y="8.488" />
+        <Point X="17.406" Y="7.75" />
+        <Point X="17.5" Y="7.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAAAAAAAAAAAAACAAACAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\EmployeesViewModel\EmployeeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterEmployeeViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.EmployeesViewModel.FilterEmployeeViewModel">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAABAAgAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\EmployeesViewModel\FilterEmployeeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.PositionsViewModel.FilterPositionViewModel">
+    <Position X="9.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\PositionsViewModel\FilterPositionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.PositionsViewModel.PositionViewModel">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.406" Y="8.046" />
+        <Point X="10.406" Y="8.671" />
+        <Point X="11.667" Y="8.671" Type="JumpStart" />
+        <Point X="11.833" Y="8.671" Type="JumpEnd" />
+        <Point X="13.417" Y="8.671" Type="JumpStart" />
+        <Point X="13.583" Y="8.671" Type="JumpEnd" />
+        <Point X="15.167" Y="8.671" Type="JumpStart" />
+        <Point X="15.333" Y="8.671" Type="JumpEnd" />
+        <Point X="17.125" Y="8.671" />
+        <Point X="17.125" Y="9.555" />
+        <Point X="17.875" Y="9.555" />
+        <Point X="17.875" Y="9.18" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAgAAAASAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PositionsViewModel\PositionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterPositionViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SchedulesViewModel.FilterScheduleViewModel">
+    <Position X="11" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAIAAgAAABAAAEACAAAAA=</HashCode>
+      <FileName>ViewModels\SchedulesViewModel\FilterScheduleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SchedulesViewModel.ScheduleViewModel">
+    <Position X="11" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.156" Y="8.238" />
+        <Point X="12.156" Y="8.671" />
+        <Point X="13.417" Y="8.671" Type="JumpStart" />
+        <Point X="13.583" Y="8.671" Type="JumpEnd" />
+        <Point X="15.167" Y="8.671" Type="JumpStart" />
+        <Point X="15.333" Y="8.671" Type="JumpEnd" />
+        <Point X="17.25" Y="8.671" />
+        <Point X="17.25" Y="9.43" />
+        <Point X="17.792" Y="9.43" Type="JumpStart" />
+        <Point X="17.958" Y="9.43" Type="JumpEnd" />
+        <Point X="19.568" Y="9.43" />
+        <Point X="19.568" Y="9" />
+        <Point X="19" Y="9" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAAAAAAAAACAAgAEAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SchedulesViewModel\ScheduleViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterScheduleViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.ClassSortViewModel">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAACAAAAAACAAQAAAACAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\ClassSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClassNameSort" />
+      <Property Name="StudentCountSort" />
+      <Property Name="YearCreatedSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.ClassTypeSortViewModel">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\ClassTypeSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClassTypeNameSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.EmployeeSortViewModel">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACCAAQAAAAAAAAAAAQAgAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\EmployeeSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FirstNameSort" />
+      <Property Name="LastNameSort" />
+      <Property Name="MiddleNameSort" />
+      <Property Name="PositionNameSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.PositionSortViewModel">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\PositionSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PositionNameSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.ScheduleSortViewModel">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAQACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\ScheduleSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClassNameSort" />
+      <Property Name="SubjectNameSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.StudentSortViewModel">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAACAAAAQACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\StudentSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SubjectNameSort" />
+      <Property Name="ClassNameSort" />
+      <Property Name="DateOfBirthSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SortViewModels.SubjectSortViewModel">
+    <Position X="14.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAACAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortViewModels\SubjectSortViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EmployeeNameSort" />
+      <Property Name="SubjectNameSort" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.StudentViewModel.FilterStudentViewModel" Collapsed="true">
+    <Position X="12.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAEAAAACAgADAABAQAAAAAAIQAAACAAAAACAAIAg=</HashCode>
+      <FileName>ViewModels\StudentViewModel\FilterStudentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.StudentViewModel.StudentViewModel">
+    <Position X="12.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAACAAAAAAAAACAgAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\StudentViewModel\StudentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterStudentViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SubjectsViewModel.FilterSubjectViewModel">
+    <Position X="14.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>ViewModels\SubjectsViewModel\FilterSubjectViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.SubjectsViewModel.SubjectViewModel">
+    <Position X="14.5" Y="6.75" Width="1.5" />
+    <AssociationLine Name="PageViewModel" Type="SchoolWeb.ViewModels.PageViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16" Y="6.938" />
+        <Point X="19" Y="6.938" />
+        <Point X="19" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAEAAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAABA=</HashCode>
+      <FileName>ViewModels\SubjectsViewModel\SubjectViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FilterSubjectViewModel" />
+      <Property Name="SortViewModel" />
+      <Property Name="PageViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.Users.ChangePasswordViewModel">
+    <Position X="22.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Users\ChangePasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.Users.CreateUserViewModel">
+    <Position X="24.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAQAAAAgCAQAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Users\CreateUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.Users.EditUserViewModel">
+    <Position X="20.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAQAAAAgAAQAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Users\EditUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.Users.UserViewModel">
+    <Position X="26" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAQAAAAAAAQAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\Users\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.ViewModels.PageViewModel">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAgAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Models.ApplicationUser">
+    <Position X="20.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SchoolWeb.Models.ErrorViewModel">
+    <Position X="22.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SchoolWeb.Controllers.ClassesController">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAABBACAAAAAAAAAAAEAAEACAAEAAAAAABA=</HashCode>
+      <FileName>Controllers\ClassesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.EmployeesController">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBACAAAAAAAAAACEAAEACAAkAAAAAABA=</HashCode>
+      <FileName>Controllers\EmployeesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.HomeController">
+    <Position X="18" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAIAAAAQAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.PositionsController">
+    <Position X="9.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAABhACAAAAAAAAAAAEAAEACAAEAAAAAABA=</HashCode>
+      <FileName>Controllers\PositionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.SchedulesController">
+    <Position X="11" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAABBACQAAAAAAAAAAEAAEACAAEAAAAAABA=</HashCode>
+      <FileName>Controllers\SchedulesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.StudentsController">
+    <Position X="12.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAABBACAAAAAAAAAAAEAAEACAAEABAAAABA=</HashCode>
+      <FileName>Controllers\StudentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.SubjectsController">
+    <Position X="14.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAABBACAAAAAAAAAAAEAAEACAAEAAAAAABA=</HashCode>
+      <FileName>Controllers\SubjectsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.UsersController">
+    <Position X="16.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAgAAAAAAAAAAgAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.Controllers.ClassTypesController">
+    <Position X="5.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAABBACAAAAAAAAAAAEAAEACAAEAAAABABA=</HashCode>
+      <FileName>Controllers\СlassTypesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolWeb.TagHelpers.PageLinkTagHelper" Collapsed="true">
+    <Position X="16.25" Y="10" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.ClassSortState">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAkAAAAAEAAABAAAAAAACAAAAAAAQIAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\ClassSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.ClassTypeSortState">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\ClassTypeSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.EmployeeSortState">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgAAAAAAACEIAAAAgAAAAAAACAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\EmployeeSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.PositionSortState">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAIAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\PositionSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.ScheduleSortState">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAIAAAAAAAAAAAAAAACAAAAAAAAIAAgAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\ScheduleSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.StudentSortState">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAgAIAAAAAAAAAAAAAAACAAQAAAAAIAAgAAAAA=</HashCode>
+      <FileName>ViewModels\SortStates\StudentSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SchoolWeb.ViewModels.SortStates.SubjectSortState">
+    <Position X="14.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAIAACAAAAAAAAAAAgAAIAA=</HashCode>
+      <FileName>ViewModels\SortStates\SubjectSortState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
